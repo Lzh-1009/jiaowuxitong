@@ -1,8 +1,11 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
-// https://vitejs.dev/config/
 export default defineConfig({
+  base: '/jiaowuxitong/',
   plugins: [vue()],
-  base: '/jiaowusystem/'
+  server: {
+    host: true,
+    port: 5173
+  }
 })
