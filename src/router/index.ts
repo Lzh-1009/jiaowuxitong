@@ -1,8 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router' 
 import { useAuthStore } from '../store/auth'
 
 const router = createRouter({
-  history: createWebHistory('/jiaowusystem/'),
+  history: createWebHashHistory(), 
   routes: [
     {
       path: '/login',
@@ -60,13 +60,13 @@ const router = createRouter({
   ]
 })
 
-// 路由守卫
+// 路由守卫代码保持不变
 router.beforeEach((to, from, next) => {
   const authStore = useAuthStore()
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
   const requiresAdmin = to.matched.some(record => record.meta.requiresAdmin)
   const requiresSuperAdmin = to.matched.some(record => record.meta.requiresSuperAdmin)
-  
+
   if (requiresAuth && !authStore.isAuthenticated()) {
     next('/login')
   } else if (requiresSuperAdmin && !authStore.isSuperAdmin()) {
