@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>清除数据</title>
+</head>
+<body>
+    <h1>清除系统数据</h1>
+    <p>点击按钮清除所有数据，系统将从初始状态开始。</p>
+    <button onclick="clearData()">清除数据</button>
+    <div id="message"></div>
+
+    <script>
+        function clearData() {
+            // 清除所有localStorage数据
+            localStorage.clear();
+            
+            // 显示成功消息
+            document.getElementById('message').innerHTML = '<p style="color: green;">所有数据已清除，系统将从初始状态开始。</p>';
+            
+            // 2秒后刷新页面
+            setTimeout(function() {
+                window.location.href = 'http://localhost:5173';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
